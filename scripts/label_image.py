@@ -16,7 +16,7 @@
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
-
+from shutil import copyfile
 import argparse
 import sys
 import time
@@ -133,5 +133,17 @@ if __name__ == "__main__":
 
   print('\nEvaluation time (1-image): {:.3f}s\n'.format(end-start))
   template = "{} (score={:0.5f})"
+  gflag = 0
   for i in top_k:
     print(template.format(labels[i], results[i]))
+
+    if labels[i] != 'nongarbage' and results[i] > 0.6:
+        print(labels[i])
+        print(str(results[i]))
+        gflag = 1
+
+  if gflag == 1:
+    copyfile(file_name, file_name+".garbage")
+  else:
+    copyfile(file_name, file_name+".nongarbage")
+
