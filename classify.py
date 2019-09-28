@@ -10,7 +10,7 @@ import pprint
 
 txtfiles = []
 #output = os.system("python -m scripts.label_image --graph='tf_files/retrained_graph.pb'      --image='/home/ayush/Desktop/image_processing/testing/test4.jpg'")
-testdir = "/var/www/acorn-web/testing/"
+testdir = "testing/"
 for file in glob.glob(testdir+"*.jpg"):
     txtfiles.append(file)
     print("Got file "+file)
